@@ -7,11 +7,9 @@ app = Flask(__name__)
 
 extracted_text = ""
 
-# Carga de claves desde variables de entorno (más seguro para Azure)
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_API_BASE = os.getenv("OPENAI_API_BASE")
 
-# Verificación básica por si faltan claves
 if not OPENAI_API_KEY or not OPENAI_API_BASE:
     raise EnvironmentError("Faltan variables de entorno OPENAI_API_KEY y/o OPENAI_API_BASE.")
 
@@ -55,4 +53,4 @@ def ask():
         return jsonify({"error": f"Error al consultar el modelo: {str(e)}"}), 500
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=80)
